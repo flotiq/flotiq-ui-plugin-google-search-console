@@ -8,7 +8,7 @@ import { handleFormSidebar } from "./form-config";
  * Register the plugin
  */
 
-registerFn(pluginInfo, (handler, client, globals) => {
+registerFn(pluginInfo, (handler, globals) => {
   /**
    * Add plugin styles to the head of the document
    */
@@ -19,8 +19,8 @@ registerFn(pluginInfo, (handler, client, globals) => {
     document.head.appendChild(style);
   }
 
-  handler.on("flotiq.plugins.manage::form-schema", (data) =>
-    handleManageSchema(data, client, globals),
+  handler.on("flotiq.plugins.manage::form-schema", ({contentTypes}) =>
+    handleManageSchema(contentTypes),
   );
 
   /**
