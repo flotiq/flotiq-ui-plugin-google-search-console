@@ -1,8 +1,95 @@
-@font-face {
-  font-family: "Roboto Mono";
-  src: url(./RobotoMono-Medium.ttf) format("truetype");
+.plugin-chatgpt-faq__button {
+  display: flex;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  cursor: pointer;
+  width: 2rem;
+  position: absolute;
+  left: -2.5rem;
+  top: 2.5rem;
+  content: url("/images/pencil-faq-icon.svg");
 }
 
-.plugin-name-cell-renderer {
-  font-family: "Roboto Mono", monospace;
+.mode-dark .plugin-chatgpt-faq__button:not(.plugin-chatgpt-faq__button--loading) {
+  filter: invert(0.85);
+}
+
+.plugin-chatgpt-faq__button:hover:not(.plugin-chatgpt-faq__button--loading) {
+  opacity: 50%;
+}
+
+@keyframes plugin-chatgpt-faq__icon--spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.plugin-multilingual-tabs {
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+}
+
+.plugin-multilingual-tab__item {
+  padding: 16px 28px;
+}
+
+.plugin-multilingual-tab__item:not(:last-child) {
+  margin-right: 8px;
+}
+
+.plugin-multilingual-tab__item.plugin-multilingual-tab__item--selected {
+  color: #0083fc;
+  border-bottom: 3px solid #0083fc;
+}
+
+.plugin-multilingual-tab__item.plugin-multilingual-tab__item--default {
+  order: -1;
+}
+
+.plugin-multilingual-tab__item.plugin-multilingual-tab__item--error {
+  color: #eb5757;
+  border-color: #eb5757;
+}
+
+.plugin-multilingual-translations-warning,
+.plugin-multilingual-remove-ctd-warning__heading {
+  color: #eb5757;
+  display: flex;
+}
+
+.plugin-multilingual-translations-warning {
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #eb5757;
+  padding-bottom: 1rem;
+}
+
+.plugin-multilingual-remove-ctd-warning__heading {
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.plugin-multilingual-translations-warning::before,
+.plugin-multilingual-remove-ctd-warning__heading::before {
+  display: inline-block;
+  content: url("/images/exclamation_triangle_red-icon.svg");
+  width: 20px;
+  height: 20px;
+  align-self: start;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.plugin-multilingual-remove-ctd-warning__heading::before {
+  margin-right: 12px;
+}
+
+.plugin-multilingual-remove-ctd-warning__content {
+  white-space: pre-line;
 }
