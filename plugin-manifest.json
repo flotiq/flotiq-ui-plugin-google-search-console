@@ -1,0 +1,15 @@
+{
+  "id": "flotiq.plain-js-template",
+  "name": "Plain JS Plugin Template",
+  "description": "A plain js example of Flotiq plugin. This plugin changes the rendering of some data in the grid. It renders colorful text properties, bold numbers, and relations as text.",
+  "version": "0.1.2",
+  "repository": "https://github.com/flotiq/flotiq-ui-plugin-templates-plain-js",
+  "url": "https://localhost:3053/index.js",
+  "permissions": [
+    {
+      "ctdName": "*",
+      "canRead": true,
+      "type": "CO"
+    }
+  ]
+}

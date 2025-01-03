@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Roboto Mono";
+  src: url(./RobotoMono-Medium.ttf) format("truetype");
+}
+
+.plugin-name-cell-renderer {
+  font-family: "Roboto Mono", monospace;
+}

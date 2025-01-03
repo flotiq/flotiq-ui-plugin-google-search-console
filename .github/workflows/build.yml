@@ -1,0 +1,48 @@
+name: Build & Release
+
+permissions:
+    contents: write
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  build-release: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+    - run: yarn
+    - run: yarn build
+    - name: Create tar from built plugin
+      run: | 
+        BUILDFOLDER="dist"
+        MANIFEST=$(find ./$BUILDFOLDER -name plugin-manifest.json)
+        [ -z $MANIFEST ] && cp plugin-manifest $BUILDFOLDER
+        MANIFEST="$BUILDFOLDER/plugin-manifest.json"
+        VERSION=$(jq '.version' $MANIFEST -r)
+        echo "version=$VERSION"
+        mkdir -p output
+        tar -C $BUILDFOLDER -czf output/$VERSION.tar.gz .
+        ls -la output
+        echo "version=$VERSION" >> $GITHUB_ENV
+    - name: Create artifact 
+      uses: actions/upload-artifact@v4
+      with:
+          name: plugin-package
+          path: output
+    - name: Release built plugin
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: output/*
+        tag: ${{ env.version }}
+        overwrite: true
+        file_glob: true
+      if: github.ref == 'refs/heads/main'
