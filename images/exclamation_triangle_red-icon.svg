@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 25" style="enable-background:new 0 0 28 25;" xml:space="preserve">
+<style type="text/css">
+	.exclamation-triangle-red-icon-st0{fill:none;stroke:#EB5757;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+	.exclamation-triangle-red-icon-st1{fill:#EB5757;fill-opacity:0.1;stroke:#EB5757;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+	.exclamation-triangle-red-icon-st2{fill:#EB5757;}
+</style>
+<g>
+	<g>
+		<g>
+			<path class="exclamation-triangle-red-icon-st0" d="M14,10v5"/>
+			<path class="exclamation-triangle-red-icon-st1" d="M12.3,2l-11,19C1.1,21.3,1,21.6,1,22s0.1,0.7,0.3,1s0.4,0.6,0.7,0.7C2.3,23.9,2.6,24,3,24h22
+				c0.4,0,0.7-0.1,1-0.3c0.3-0.2,0.6-0.4,0.7-0.7c0.2-0.3,0.3-0.6,0.3-1s-0.1-0.7-0.3-1l-11-19c-0.2-0.3-0.4-0.6-0.7-0.7
+				S14.4,1,14,1s-0.7,0.1-1,0.3C12.7,1.4,12.4,1.7,12.3,2z"/>
+			<path class="exclamation-triangle-red-icon-st2" d="M14,21c0.8,0,1.5-0.7,1.5-1.5S14.8,18,14,18s-1.5,0.7-1.5,1.5S13.2,21,14,21z"/>
+		</g>
+	</g>
+</g>
+</svg>
