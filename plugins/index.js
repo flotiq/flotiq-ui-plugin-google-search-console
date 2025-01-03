@@ -1,14 +1,14 @@
-import { registerFn } from "../common/plugin-element-cache";
+import {registerFn} from "../common/plugin-element-cache";
 import pluginInfo from "../plugin-manifest.json";
 import cssString from "inline:./styles/style.css";
-import { handleManageSchema } from "./manage";
-import { handleFormSidebar } from "./form-config";
+import {handleManageSchema} from "./manage";
+import {handleFormSidebar} from "./form-config";
 
 /**
  * Register the plugin
  */
 
-registerFn(pluginInfo, (handler, globals) => {
+registerFn(pluginInfo, (handler, _, {getPluginSettings}) => {
   /**
    * Add plugin styles to the head of the document
    */
@@ -27,6 +27,6 @@ registerFn(pluginInfo, (handler, globals) => {
    * Extend the Content Object forms with GSC sidebar panel
    */
   handler.on("flotiq.form.sidebar-panel::add", (data) => {
-    return handleFormSidebar(data, globals.getPluginSettings);
+    return handleFormSidebar(data, getPluginSettings);
   });
 });

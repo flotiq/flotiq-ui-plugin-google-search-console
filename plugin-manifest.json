@@ -1,5 +1,5 @@
 {
-  "id": "flotiq.google-search-console",
+  "id": "flotiq.google-search-console-dev",
   "name": "Google Search Console plugin",
   "description": "This plugin integrates with Google Search Console to check the status of indexing for each page",
   "version": "0.3.0",
