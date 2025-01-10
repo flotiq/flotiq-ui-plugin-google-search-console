@@ -59,7 +59,7 @@ export const getSchema = (contentTypes) => ({
               inputType: "text",
             },
             route: {
-              label: i18n.t("Route"),
+              label: i18n.t("Route"),         //@todo fix tranlations
               unique: false,
               helpText:
                 "Enter the path after Site URL, use curly braces to include field values (e.g. /blog/{slug}/)",

@@ -1,11 +1,12 @@
-import pluginInfo from "../../plugin-manifest.json";
-import { handlePluginFormConfig } from "./plugin-form";
+import pluginInfo from '../../plugin-manifest.json';
+import { handlePluginFormConfig } from './plugin-form';
 
 import {
   addElementToCache,
   getCachedElement,
-} from "../../common/plugin-element-cache.js";
-import axios from "axios";
+} from '../../common/plugin-element-cache.js';
+import axios from 'axios';
+import tepmlate from 'inline:../templates/template.html';
 
 export const handleFormSidebar = (data, getPluginSettings) => {
   if (
@@ -17,7 +18,7 @@ export const handleFormSidebar = (data, getPluginSettings) => {
   }
 
   const pluginSettings = getPluginSettings();
-  const parsedSettings = JSON.parse(pluginSettings || "{}");
+  const parsedSettings = JSON.parse(pluginSettings || '{}');
 
   const contentTypeSettings = parsedSettings?.config?.find(
     ({ content_type }) => content_type === data?.contentType?.name,
@@ -34,41 +35,62 @@ export const createSidebar = (contentObject, contentTypeSettings) => {
   if (!contentObject?.slug) return;
 
   const objectId = contentObject?.id;
-  const containerCacheKey = `${pluginInfo.id}-${objectId || "new"}-gsc-sidebar`;
+  const containerCacheKey = `${pluginInfo.id}-${objectId || 'new'}-gsc-sidebar`;
   let gscCheckContainer = getCachedElement(containerCacheKey)?.element;
 
   const { site_url, route } = contentTypeSettings;
 
   if (!gscCheckContainer) {
     // Prepare the container
-    gscCheckContainer = document.createElement("div");
-    gscCheckContainer.setAttribute("id", "gsc-check");
+    gscCheckContainer = document.createElement('div');
+    gscCheckContainer.setAttribute('id', 'gsc-check-test');
 
-    gscCheckContainer.classList.value =
-      "rounded-lg bg-white dark:bg-slate-950 relative h-fit py-5 px-4 order-30";
-    gscCheckContainer.innerHTML = `<h4>Indexing status</h4>`;
+    gscCheckContainer.classList.add(
+      'plugin-google-search-console__container',
+      'plugin-google-search-console__container--loading',
+    );
+    gscCheckContainer.innerHTML = tepmlate;
 
     let url = route.replace(
       /{(\w+)}/g,
-      (_, field) => contentObject[field] || "",
+      (_, field) => contentObject[field] || '',
     );
-    url = url.replace(/\/+/g, "/"); // Ensure no multiple slashes in the URL
-    const fullUrl = `${site_url}${url}`.replace(/([^:]\/)\/+/g, "$1");
+    url = url.replace(/\/+/g, '/'); // Ensure no multiple slashes in the URL
+    const fullUrl = `${site_url}${url}`.replace(/([^:]\/)\/+/g, '$1');
 
-    // Don't wait for the response to render the container (no await)
+    const header = gscCheckContainer.querySelector(
+      `#plugin-google-search-console-header`,
+    );
+    const statusSpan = gscCheckContainer.querySelector(
+      `#plugin-google-search-console-status`,
+    );
+    const crawlDate = gscCheckContainer.querySelector(
+      `#plugin-google-search-console-crawl-date`,
+    );
+    const link = gscCheckContainer.querySelector(
+      `#plugin-google-search-console-link`,
+    );
+    const btn = gscCheckContainer.querySelector(
+      `#plugin-google-search-console-button`,
+    );
+
+    // // Don't wait for the response to render the container (no await)
     checkIndexingStatus(fullUrl, site_url).then((status) => {
+      gscCheckContainer.classList.remove(
+        'plugin-google-search-console__container--loading',
+      );
       if (status) {
-        gscCheckContainer.innerHTML +=
-          `<br/>${status.response.inspectionResult.indexStatusResult.coverageState}`;
-        gscCheckContainer.innerHTML +=
-          `<br/>Last crawl: ${status.response.inspectionResult.indexStatusResult.lastCrawlTime}`;
-        gscCheckContainer.innerHTML +=
-          `<br/>
-           <a href="${status.response.inspectionResult.inspectionResultLink}" target="_blank">
-             View in Google Search Console
-           </a>`;
+        const { coverageState, lastCrawlTime } =
+          status.response.inspectionResult.indexStatusResult;
+
+        header.textContent = 'Indexing status';
+        statusSpan.textContent = coverageState;
+        crawlDate.textContent = lastCrawlTime;
+        link.href = status.response.inspectionResult.inspectionResultLink;
+        link.textContent = 'View in Google Search Console';
+        btn.textContent = 'Request Reindexing';
       } else {
-        console.error("Failed to retrieve indexing status");
+        console.error('Failed to retrieve indexing status');
       }
     });
 
@@ -98,10 +120,10 @@ export const checkIndexingStatus = async (url, siteUrl) => {
     if (response.data && response.data.response) {
       return response.data;
     } else {
-      throw new Error("No result found");
+      throw new Error('No result found');
     }
   } catch (error) {
-    console.error("Error checking indexing status:", error);
+    console.error('Error checking indexing status:', error);
     return null;
   }
 };
