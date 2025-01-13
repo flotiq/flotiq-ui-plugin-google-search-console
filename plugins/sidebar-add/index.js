@@ -5,7 +5,7 @@ import {
   getCachedElement,
 } from '../../common/plugin-element-cache.js';
 import axios from 'axios';
-import tepmlate from 'inline:../templates/template.html';
+import template from 'inline:../templates/template.html';
 import i18n from 'i18next';
 import moment from 'moment';
 
@@ -42,7 +42,7 @@ const createSidebar = (contentObject, contentTypeSettings) => {
       'plugin-google-search-console__container',
       'plugin-google-search-console__container--loading',
     );
-    gscCheckContainer.innerHTML = tepmlate;
+    gscCheckContainer.innerHTML = template;
 
     let url = route.replace(
       /{(\w+)}/g,
