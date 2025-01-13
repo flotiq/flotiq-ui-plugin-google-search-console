@@ -4,7 +4,6 @@ import cssString from 'inline:./styles/style.css';
 import { handleManagePlugin } from './manage';
 import { handleSidebarAdd } from './sidebar-add/index.js';
 import i18n from 'i18next';
-import { handlePluginFormConfig } from './field-config/plugin-form/index.js';
 
 /**
  * Register the plugin
@@ -25,16 +24,6 @@ registerFn(pluginInfo, (handler, _, { getPluginSettings, getLanguage }) => {
   if (language !== i18n.language) {
     i18n.changeLanguage(language);
   }
-
-  handler.on('flotiq.form.field::config', (data) => {
-    if (
-      data.contentType?.id === pluginInfo.id &&
-      data.contentType?.nonCtdSchema &&
-      data.name
-    ) {
-      return handlePluginFormConfig(data);
-    }
-  });
 
   handler.on('flotiq.plugins.manage::form-schema', ({ contentTypes }) =>
     handleManagePlugin(contentTypes),
