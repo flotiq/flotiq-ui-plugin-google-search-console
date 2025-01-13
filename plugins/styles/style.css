@@ -5,18 +5,20 @@
   padding: 20px 16px;
 }
 
-.plugin-google-search-console__container--loading .plugin-google-search-console__content {
+.plugin-google-search-console__container--loading
+  .plugin-google-search-console__content {
   display: none;
 }
 
-.plugin-google-search-console__container--loading .plugin-google-search-console__loader-container {
+.plugin-google-search-console__container--loading
+  .plugin-google-search-console__loader-container {
   display: flex;
 }
 
 /** Content */
 .plugin-google-search-console__content {
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   display: flex;
 }
 
@@ -25,7 +27,7 @@
   width: 40px;
   height: 40px;
   border: 5px solid #ccc;
-  border-top: 5px solid #0083FC;
+  border-top: 5px solid #0083fc;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -40,62 +42,61 @@
 
 /** status */
 .plugin-google-search-console__status--indexed:before {
-  content: url("../images/submited.svg");
+  content: url('../images/submited.svg');
   vertical-align: middle;
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   margin-right: 10px;
 }
 
 .plugin-google-search-console__status--duplicate:before {
-  content: url("../images/duplicate.svg");
+  content: url('../images/duplicate.svg');
   vertical-align: middle;
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   margin-right: 10px;
 }
 
-.plugin-google-search-console__status--warning:before{
-  content: url("../images/warning.svg");
+.plugin-google-search-console__status--warning:before {
+  content: url('../images/warning.svg');
   vertical-align: middle;
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   margin-right: 10px;
 }
 
 /** crawl date  */
 .plugin-google-search-console__crawl-date:before {
-  content: url("../images/clock.svg");
+  content: url('../images/clock.svg');
   vertical-align: middle;
-  width: 24px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   margin-right: 10px;
 }
 
-
 /** google search console link */
 .plugin-google-search-console__link {
-  color: #0083FC;
-  text-decoration: underline #0083FC;
+  color: #0083fc;
+  text-decoration: underline #0083fc;
 }
 
 .plugin-google-search-console__link:before {
-  content: url("../images/google.svg");
+  content: url('../images/google.svg');
   vertical-align: middle;
-  width: 24px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   margin-right: 10px;
 }
 
 /** button */
 .plugin-google-search-console__button {
-  border: #0083FC 2px solid;
-  color: #0083FC;
+  border: #0083fc 2px solid;
+  color: #0083fc;
   border-radius: 8px;
   padding: 9px 12px;
   font-weight: 600;
@@ -107,12 +108,12 @@
 }
 
 .plugin-google-search-console__button:hover {
-  background-color: #0083FC;
+  background-color: #0083fc;
   color: white;
 }
 
 .plugin-google-search-console__button:before {
-  content: url("../images/reload.svg");
+  content: url('../images/reload.svg');
   width: 12px;
   height: 12px;
   display: inline-block;
@@ -121,7 +122,7 @@
 }
 
 .plugin-google-search-console__button:hover:before {
-  content: url("../images/reload-white.svg");
+  content: url('../images/reload-white.svg');
 }
 
 /** dark mode */
@@ -134,21 +135,20 @@
 
 /** status */
 .mode-dark .plugin-google-search-console__status--indexed:before {
-  content: url("../images/submited-white.svg");
-
+  content: url('../images/submited-white.svg');
 }
 
 .mode-dark .plugin-google-search-console__status--duplicate:before {
-  content: url("../images/duplicate-white.svg");
+  content: url('../images/duplicate-white.svg');
 }
 
-.mode-dark .plugin-google-search-console__status--warning:before{
-  content: url("../images/warning-white.svg");
+.mode-dark .plugin-google-search-console__status--warning:before {
+  content: url('../images/warning-white.svg');
 }
 
 /** crawl date  */
 .mode-dark .plugin-google-search-console__crawl-date:before {
-  content: url("../images/clock-white.svg");
+  content: url('../images/clock-white.svg');
 }
 
 /** google search console link */
@@ -158,7 +158,7 @@
 }
 
 .mode-dark .plugin-google-search-console__link:before {
-  content: url("../images/google-white.svg");
+  content: url('../images/google-white.svg');
 }
 
 /** button */
@@ -167,9 +167,9 @@
 }
 
 .mode-dark .plugin-google-search-console__button:before {
-  content: url("../images/reload-white.svg");
+  content: url('../images/reload-white.svg');
 }
 
 .mode-dark .plugin-google-search-console__button:hover {
-  background-color: #0083FC;
+  background-color: #0083fc;
 }

@@ -51,7 +51,7 @@ export const getSchema = (contentTypes) => ({
           order: ['content_type', 'site_url', 'route'],
           propertiesConfig: {
             site_url: {
-              label: i18n.t('siteUrl'),
+              label: i18n.t('SiteUrl'),
               unique: false,
               helpText: i18n.t('SiteUrlHelpText'),
               inputType: 'text',
