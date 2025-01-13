@@ -1,37 +1,37 @@
-import i18n from "../../../i18n";
-import pluginInfo from "../../../plugin-manifest.json";
+import i18n from '../../../i18n';
+import pluginInfo from '../../../plugin-manifest.json';
 
 export const getSchema = (contentTypes) => ({
   id: pluginInfo.id,
   name: pluginInfo.id,
   label: pluginInfo.name,
   internal: false,
-  workflowId: "generic",
+  workflowId: 'generic',
   schemaDefinition: {
-    type: "object",
+    type: 'object',
     allOf: [
       {
-        $ref: "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        $ref: '#/components/schemas/AbstractContentTypeSchemaDefinition',
       },
       {
-        type: "object",
+        type: 'object',
         properties: {
           config: {
-            type: "array",
+            type: 'array',
             items: {
-              type: "object",
-              required: ["api_key", "site_url", "content_type", "route"],
+              type: 'object',
+              required: ['site_url', 'content_type', 'route'],
               properties: {
                 site_url: {
-                  type: "string",
+                  type: 'string',
                   minLength: 1,
                 },
                 content_type: {
-                  type: "string",
+                  type: 'string',
                   minLength: 1,
                 },
                 route: {
-                  type: "string",
+                  type: 'string',
                   minLength: 1,
                 },
               },
@@ -44,42 +44,39 @@ export const getSchema = (contentTypes) => ({
     additionalProperties: false,
   },
   metaDefinition: {
-    order: ["config"],
+    order: ['config'],
     propertiesConfig: {
       config: {
         items: {
-          order: ["content_type", "site_url", "route"],
+          order: ['content_type', 'site_url', 'route'],
           propertiesConfig: {
             site_url: {
-              label: i18n.t("Site URL"),
+              label: i18n.t('SiteUrl'),
               unique: false,
-              helpText:
-                "Enter full https:// URL of your website, as indexed by Google (e.g. https://flotiq.com)" +
-                " add trailing slash for domain properties",
-              inputType: "text",
+              helpText: i18n.t('SiteUrlHelpText'),
+              inputType: 'text',
             },
             route: {
-              label: i18n.t("Route"),
+              label: i18n.t('Route'),
               unique: false,
-              helpText:
-                "Enter the path after Site URL, use curly braces to include field values (e.g. /blog/{slug}/)",
-              inputType: "text",
+              helpText: i18n.t('RouteHelpText'),
+              inputType: 'text',
             },
             content_type: {
-              label: i18n.t("ContentType"),
+              label: i18n.t('ContentType'),
               unique: false,
-              helpText: "",
+              helpText: '',
               isMultiple: false,
-              inputType: "select",
+              inputType: 'select',
               optionsWithLabels: contentTypes,
               useOptionsWithLabels: true,
             },
           },
         },
-        label: "config",
+        label: i18n.t('Config'),
         unique: false,
-        helpText: "",
-        inputType: "object",
+        helpText: '',
+        inputType: 'object',
       },
     },
   },
