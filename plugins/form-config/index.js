@@ -7,6 +7,8 @@ import {
 } from '../../common/plugin-element-cache.js';
 import axios from 'axios';
 import tepmlate from 'inline:../templates/template.html';
+import i18n from 'i18next';
+import moment from 'moment';
 
 export const handleFormSidebar = (data, getPluginSettings) => {
   if (
@@ -76,19 +78,34 @@ export const createSidebar = (contentObject, contentTypeSettings) => {
 
     // // Don't wait for the response to render the container (no await)
     checkIndexingStatus(fullUrl, site_url).then((status) => {
-      gscCheckContainer.classList.remove(
-        'plugin-google-search-console__container--loading',
-      );
       if (status) {
-        const { coverageState, lastCrawlTime } =
-          status.response.inspectionResult.indexStatusResult;
+        gscCheckContainer.classList.remove(
+          'plugin-google-search-console__container--loading',
+        );
 
-        header.textContent = 'Indexing status';
-        statusSpan.textContent = coverageState;
-        crawlDate.textContent = lastCrawlTime;
+        console.log(status.response, fullUrl);
+
+        header.textContent = i18n.t('Header');
+
+        statusSpan.textContent =
+          status.response.inspectionResult.indexStatusResult.coverageState;
+
+        parseStatusSpan(
+          statusSpan,
+          status.response.inspectionResult.indexStatusResult.indexingState,
+        );
+
+        crawlDate.textContent = i18n.t('lastCrawlTime', {
+          date: moment(
+            status.response.inspectionResult.indexStatusResult.lastCrawlTime,
+          ).format('YYYY-MM-DD | H:mm:ss'),
+        });
+
         link.href = status.response.inspectionResult.inspectionResultLink;
-        link.textContent = 'View in Google Search Console';
-        btn.textContent = 'Request Reindexing';
+
+        link.textContent = i18n.t('GoogleSearchConsoleLink');
+
+        btn.textContent = i18n.t('RequestReindexing');
       } else {
         console.error('Failed to retrieve indexing status');
       }
@@ -98,6 +115,16 @@ export const createSidebar = (contentObject, contentTypeSettings) => {
   }
 
   return gscCheckContainer;
+};
+
+const parseStatusSpan = (container, indexingStatus) => {
+  const iconClass = {
+    INDEXING_ALLOWED: 'plugin-google-search-console__status--indexed',
+    NOT_INDEXED: 'plugin-google-search-console__status--duplicate',
+    INDEXING_STATE_UNSPECIFIED: 'plugin-google-search-console__status--warning',
+  };
+
+  container.classList.add(iconClass[indexingStatus]);
 };
 
 /**

@@ -57,6 +57,15 @@
   margin-right: 10px;
 }
 
+.plugin-google-search-console__status--warning:before{
+  content: url("../images/warning.svg");
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
 /** crawl date  */
 .plugin-google-search-console__crawl-date:before {
   content: url("../images/clock.svg");
@@ -89,9 +98,12 @@
   color: #0083FC;
   border-radius: 8px;
   padding: 9px 12px;
-  max-width: 200px;
   font-weight: 600;
+  width: fit-content;
   margin-top: 10px;
+  /* do not remove! */
+  display: none;
+  /* this button will be visible when we implement indexing request logic in worker */
 }
 
 .plugin-google-search-console__button:hover {
@@ -108,8 +120,56 @@
   margin-right: 10px;
 }
 
-.plugin-google-search-console__button:hover:before{
-  content: url("../images/reload-white.svg")!important;
+.plugin-google-search-console__button:hover:before {
+  content: url("../images/reload-white.svg");
 }
 
 /** dark mode */
+
+/** Container */
+.mode-dark .plugin-google-search-console__container {
+  background-color: rgb(2 6 23);
+  color: white;
+}
+
+/** status */
+.mode-dark .plugin-google-search-console__status--indexed:before {
+  content: url("../images/submited-white.svg");
+
+}
+
+.mode-dark .plugin-google-search-console__status--duplicate:before {
+  content: url("../images/duplicate-white.svg");
+}
+
+.mode-dark .plugin-google-search-console__status--warning:before{
+  content: url("../images/warning-white.svg");
+}
+
+/** crawl date  */
+.mode-dark .plugin-google-search-console__crawl-date:before {
+  content: url("../images/clock-white.svg");
+}
+
+/** google search console link */
+.mode-dark .plugin-google-search-console__link {
+  color: #fff;
+  text-decoration: underline #fff;
+}
+
+.mode-dark .plugin-google-search-console__link:before {
+  content: url("../images/google-white.svg");
+}
+
+/** button */
+.mode-dark .plugin-google-search-console__button {
+  color: #ffffff;
+}
+
+.mode-dark .plugin-google-search-console__button:before {
+  content: url("../images/reload-white.svg");
+}
+
+.mode-dark .plugin-google-search-console__button:hover {
+  background-color: #0083FC;
+}
