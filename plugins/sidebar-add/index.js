@@ -1,5 +1,4 @@
 import pluginInfo from '../../plugin-manifest.json';
-import { handlePluginFormConfig } from './plugin-form';
 
 import {
   addElementToCache,
@@ -10,15 +9,7 @@ import tepmlate from 'inline:../templates/template.html';
 import i18n from 'i18next';
 import moment from 'moment';
 
-export const handleFormSidebar = (data, getPluginSettings) => {
-  if (
-    data.contentType?.id === pluginInfo.id &&
-    data.contentType?.nonCtdSchema &&
-    data.name
-  ) {
-    return handlePluginFormConfig(data);
-  }
-
+export const handleSidebarAdd = (data, getPluginSettings) => {
   const pluginSettings = getPluginSettings();
   const parsedSettings = JSON.parse(pluginSettings || '{}');
 
@@ -32,7 +23,7 @@ export const handleFormSidebar = (data, getPluginSettings) => {
   return createSidebar(data.contentObject, contentTypeSettings);
 };
 
-export const createSidebar = (contentObject, contentTypeSettings) => {
+const createSidebar = (contentObject, contentTypeSettings) => {
   // return early if contentObject slug is not available
   if (!contentObject?.slug) return;
 

@@ -19,7 +19,7 @@ i18n.init({
         RequestReindexing: 'Request reindexing',
         RequestIndexing: 'Request indexing',
         lastCrawlTime: 'Last crawl: {{date}}',
-        FieldRequired: 'Field is required',
+        Config: 'Config',
       },
     },
     pl: {
@@ -37,7 +37,7 @@ i18n.init({
         RequestReindexing: 'Poproś o ponowne indeksowanie',
         RequestIndexing: 'Poproś o indeksowanie',
         lastCrawlTime: 'Ostatnie skanowanie: {{date}}',
-        FieldRequired: 'Pole jest wymagane',
+        Config: 'Konfiguracja',
       },
     },
   },

@@ -1,8 +1,8 @@
 import { registerFn } from '../common/plugin-element-cache';
 import pluginInfo from '../plugin-manifest.json';
 import cssString from 'inline:./styles/style.css';
-import { handleManageSchema } from './manage';
-import { handleFormSidebar } from './form-config';
+import { handleManagePlugin } from './manage';
+import { handleSidebarAdd } from './sidebar-add/index.js';
 import i18n from 'i18next';
 
 /**
@@ -26,14 +26,11 @@ registerFn(pluginInfo, (handler, _, { getPluginSettings, getLanguage }) => {
   }
 
   handler.on('flotiq.plugins.manage::form-schema', ({ contentTypes }) =>
-    handleManageSchema(contentTypes),
+    handleManagePlugin(contentTypes),
   );
 
-  /**
-   * Extend the Content Object forms with GSC sidebar panel
-   */
   handler.on('flotiq.form.sidebar-panel::add', (data) => {
-    return handleFormSidebar(data, getPluginSettings);
+    return handleSidebarAdd(data, getPluginSettings);
   });
 
   handler.on('flotiq.language::changed', ({ language }) => {

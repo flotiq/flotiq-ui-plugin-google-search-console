@@ -73,7 +73,7 @@ export const getSchema = (contentTypes) => ({
             },
           },
         },
-        label: 'config',
+        label: i18n.t('Config'),
         unique: false,
         helpText: '',
         inputType: 'object',

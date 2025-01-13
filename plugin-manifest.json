@@ -5,11 +5,5 @@
   "version": "0.4.0",
   "repository": "https://github.com/flotiq/flotiq-ui-plugin-google-search-console",
   "url": "https://localhost:3053/index.js",
-  "permissions": [
-    {
-      "ctdName": "*",
-      "canRead": true,
-      "type": "CTD"
-    }
-  ]
+  "permissions": []
 }
