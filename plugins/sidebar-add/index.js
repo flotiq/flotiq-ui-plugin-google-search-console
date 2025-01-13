@@ -74,8 +74,6 @@ const createSidebar = (contentObject, contentTypeSettings) => {
           'plugin-google-search-console__container--loading',
         );
 
-        console.log(status.response, fullUrl);
-
         header.textContent = i18n.t('Header');
 
         statusSpan.textContent =
