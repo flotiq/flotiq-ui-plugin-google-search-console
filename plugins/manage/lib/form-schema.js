@@ -20,7 +20,7 @@ export const getSchema = (contentTypes) => ({
             type: 'array',
             items: {
               type: 'object',
-              required: ['api_key', 'site_url', 'content_type', 'route'],
+              required: ['site_url', 'content_type', 'route'],
               properties: {
                 site_url: {
                   type: 'string',
