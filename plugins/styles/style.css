@@ -102,9 +102,6 @@
   font-weight: 600;
   width: fit-content;
   margin-top: 10px;
-  /* do not remove! */
-  display: none;
-  /* this button will be visible when we implement indexing request logic in worker */
 }
 
 .plugin-google-search-console__button:hover {

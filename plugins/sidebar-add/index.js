@@ -31,7 +31,7 @@ const createSidebar = (contentObject, contentTypeSettings) => {
   const containerCacheKey = `${pluginInfo.id}-${objectId || 'new'}-gsc-sidebar`;
   let gscCheckContainer = getCachedElement(containerCacheKey)?.element;
 
-  const { site_url, route } = contentTypeSettings;
+  const { site_url, route, sitemap } = contentTypeSettings;
 
   if (!gscCheckContainer) {
     // Prepare the container
@@ -95,6 +95,19 @@ const createSidebar = (contentObject, contentTypeSettings) => {
         link.textContent = i18n.t('GoogleSearchConsoleLink');
 
         btn.textContent = i18n.t('RequestReindexing');
+        btn.addEventListener('click', async () => {
+          const response = await triggerSitemapRefresh(
+            fullUrl,
+            site_url,
+            sitemap,
+          );
+
+          if (response) {
+            alert(i18n.t('ReindexingRequested'));
+          } else {
+            alert(i18n.t('FailedToRequestReindexing'));
+          }
+        });
       } else {
         console.error('Failed to retrieve indexing status');
       }
@@ -140,6 +153,36 @@ export const checkIndexingStatus = async (url, siteUrl) => {
     }
   } catch (error) {
     console.error('Error checking indexing status:', error);
+    return null;
+  }
+};
+
+/**
+ *
+ * Trigger refresh of sitemap via Google API
+ *
+ * @param {*} url
+ * @param {*} siteUrl
+ * @param {*} sitemapUrl
+ * @returns object
+ */
+export const triggerSitemapRefresh = async (url, siteUrl, sitemapUrl) => {
+  const apiUrl = `https://sweet-mode-19a2.cdwv.workers.dev/`;
+
+  try {
+    const response = await axios.put(apiUrl, {
+      url: url,
+      site: siteUrl,
+      sitemap: sitemapUrl,
+    });
+    console.log(response);
+    if (response.data == 'OK') {
+      return true;
+    } else {
+      throw new Error('Error triggering sitemap refresh');
+    }
+  } catch (error) {
+    console.error('Error triggering sitemap refresh:', error);
     return null;
   }
 };
