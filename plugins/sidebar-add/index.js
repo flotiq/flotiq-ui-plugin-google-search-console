@@ -9,7 +9,7 @@ import template from 'inline:../templates/template.html';
 import i18n from 'i18next';
 import moment from 'moment';
 
-export const handleSidebarAdd = (data, getPluginSettings) => {
+export const handleSidebarAdd = (data, toast, getPluginSettings) => {
   const pluginSettings = getPluginSettings();
   const parsedSettings = JSON.parse(pluginSettings || '{}');
 
@@ -20,10 +20,10 @@ export const handleSidebarAdd = (data, getPluginSettings) => {
   if (!contentTypeSettings) return;
   if (!data.contentObject) return;
 
-  return createSidebar(data.contentObject, contentTypeSettings);
+  return createSidebar(data.contentObject, contentTypeSettings, toast);
 };
 
-const createSidebar = (contentObject, contentTypeSettings) => {
+const createSidebar = (contentObject, contentTypeSettings, toast) => {
   // return early if contentObject slug is not available
   if (!contentObject?.slug) return;
 
@@ -94,7 +94,7 @@ const createSidebar = (contentObject, contentTypeSettings) => {
 
         link.textContent = i18n.t('GoogleSearchConsoleLink');
 
-        btn.textContent = i18n.t('RequestReindexing');
+        btn.textContent = i18n.t('RequestIndexing');
         btn.addEventListener('click', async () => {
           const response = await triggerSitemapRefresh(
             fullUrl,
@@ -103,9 +103,9 @@ const createSidebar = (contentObject, contentTypeSettings) => {
           );
 
           if (response) {
-            alert(i18n.t('ReindexingRequested'));
+            toast.success(i18n.t('ReindexingRequested'));
           } else {
-            alert(i18n.t('FailedToRequestReindexing'));
+            toast.error(i18n.t('FailedToRequestReindexing'));
           }
         });
       } else {
