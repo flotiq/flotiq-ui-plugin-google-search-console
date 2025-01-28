@@ -20,7 +20,7 @@ export const getSchema = (contentTypes) => ({
             type: 'array',
             items: {
               type: 'object',
-              required: ['site_url', 'content_type', 'route'],
+              required: ['site_url', 'content_type', 'route', 'sitemap'],
               properties: {
                 site_url: {
                   type: 'string',
@@ -31,6 +31,10 @@ export const getSchema = (contentTypes) => ({
                   minLength: 1,
                 },
                 route: {
+                  type: 'string',
+                  minLength: 1,
+                },
+                sitemap: {
                   type: 'string',
                   minLength: 1,
                 },
@@ -48,12 +52,18 @@ export const getSchema = (contentTypes) => ({
     propertiesConfig: {
       config: {
         items: {
-          order: ['content_type', 'site_url', 'route'],
+          order: ['content_type', 'site_url', 'route', 'sitemap'],
           propertiesConfig: {
             site_url: {
               label: i18n.t('SiteUrl'),
               unique: false,
               helpText: i18n.t('SiteUrlHelpText'),
+              inputType: 'text',
+            },
+            sitemap: {
+              label: i18n.t('SitemapURL'),
+              unique: false,
+              helpText: i18n.t('SitemapURLHelpText'),
               inputType: 'text',
             },
             route: {
