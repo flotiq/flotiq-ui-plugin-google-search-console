@@ -175,8 +175,8 @@ export const triggerSitemapRefresh = async (url, siteUrl, sitemapUrl) => {
       site: siteUrl,
       sitemap: sitemapUrl,
     });
-    console.log(response);
-    if (response.data == 'OK') {
+
+    if (response.data === 'OK') {
       return true;
     } else {
       throw new Error('Error triggering sitemap refresh');

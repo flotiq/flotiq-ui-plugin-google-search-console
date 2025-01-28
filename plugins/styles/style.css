@@ -98,10 +98,10 @@
   border: #0083fc 2px solid;
   color: #0083fc;
   border-radius: 8px;
-  padding: 9px 12px;
   font-weight: 600;
   width: fit-content;
-  margin-top: 10px;
+  height: 36px;
+  padding: 0 20px;
 }
 
 .plugin-google-search-console__button:hover {
