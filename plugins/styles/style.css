@@ -15,6 +15,11 @@
   display: flex;
 }
 
+/** Header */
+#plugin-google-search-console-header{
+  font-size: 16px;
+}
+
 /** Content */
 .plugin-google-search-console__content {
   flex-direction: column;
@@ -98,10 +103,10 @@
   border: #0083fc 2px solid;
   color: #0083fc;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
   width: fit-content;
   height: 36px;
-  padding: 0 20px;
+  padding: 0 12px;
 }
 
 .plugin-google-search-console__button:hover {
