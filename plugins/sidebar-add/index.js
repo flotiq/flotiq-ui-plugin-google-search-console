@@ -24,9 +24,6 @@ export const handleSidebarAdd = (data, toast, getPluginSettings) => {
 };
 
 const createSidebar = (contentObject, contentTypeSettings, toast) => {
-  // return early if contentObject slug is not available
-  if (!contentObject?.slug) return;
-
   const objectId = contentObject?.id;
   const containerCacheKey = `${pluginInfo.id}-${objectId || 'new'}-gsc-sidebar`;
   let gscCheckContainer = getCachedElement(containerCacheKey)?.element;
