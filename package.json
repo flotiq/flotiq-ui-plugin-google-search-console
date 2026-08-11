@@ -1,8 +1,11 @@
 {
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "node esbuild.config.js",
-    "start": "node esbuild.config.js --watch"
+    "start": "node esbuild.config.js --watch",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,html,mdx,json,yaml,yml,md}\"",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
