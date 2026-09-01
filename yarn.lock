@@ -11,11 +11,6 @@
     eslint-visitor-keys "^2.1.0"
     semver "^6.3.1"
 
-"@babel/runtime@^7.26.10":
-  version "7.29.7"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.29.7.tgz#12022450c45a4da6d8d8287b18a4ff2ddb23f768"
-  integrity sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==
-
 "@esbuild/aix-ppc64@0.20.2":
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.20.2.tgz#a70f4ac11c6a1dfc18b8bbb13284155d933b9537"
@@ -903,12 +898,10 @@ i18n@^0.15.1:
     math-interval-parser "^2.0.1"
     mustache "^4.2.0"
 
-i18next@^24.2.0:
-  version "24.2.3"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-24.2.3.tgz#3a05f72615cbd7c00d7e348667e2aabef1df753b"
-  integrity sha512-lfbf80OzkocvX7nmZtu7nSTNbrTYR52sLWxPtlXX1zAhVw8WEnFk4puUkCR4B1dNQwbSpEHHHemcZu//7EcB7A==
-  dependencies:
-    "@babel/runtime" "^7.26.10"
+i18next@^26.4.0:
+  version "26.4.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-26.4.0.tgz#721c4f0ae295a5c237e25b01abfc8489831c1204"
+  integrity sha512-rsmK5bFqsD1AetSFSIa43wtNR4WpvvH4p0tLEsTxkC7QTrfdFm06nbQ95bh8Og4wwaCnUEcm9DVYL2cgxitiQg==
 
 ignore@^5.2.0:
   version "5.3.2"
